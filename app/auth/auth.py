@@ -4,7 +4,7 @@ from datetime import datetime, timedelta, timezone
 from jose import jwt
 from pydantic import EmailStr
 
-from app.users.dao import UsersDAO
+from app.users.dao import UsersDAO, UsersVipDAO
 from app.config import settings
 from app.exceptions import NoAccess
 
@@ -30,6 +30,6 @@ def create_refresh_token() -> str:
     return token
 
 async def authenticate_user(email: EmailStr, password: str):
-    user = await UsersDAO.find_one_or_none(email=email)
+    user = await UsersVipDAO.find_one_or_none(email=email)
     if user and verify_password(password, user.hashed_password):
         return user

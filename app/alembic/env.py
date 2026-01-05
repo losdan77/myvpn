@@ -7,9 +7,10 @@ from alembic import context
 
 from app.config import settings
 
-from app.users.models import Users
+from app.users.models import Users, UsersVip
 from app.auth.models import RefreshTokens
 from app.servers.models import Servers
+from app.sessions.models import Sessions
 from app.database import Base
 
 # this is the Alembic Config object, which provides

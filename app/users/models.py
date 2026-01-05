@@ -10,11 +10,23 @@ class Users(Base):
     __tablename__ = 'users'
 
     id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True, default=uuid_utils.uuid7)
-    email: Mapped[str_not_null] = mapped_column(unique=True)
-    hashed_password: Mapped[str_not_null]
-    name: Mapped[str_null]
+    mac_address: Mapped[str_not_null]
     created_at: Mapped[created_at]
-    profile_photo_url: Mapped[str_null] = mapped_column(default='/images/default.jpg')
 
     def __str__(self):
         return f'{self.email}'
+
+
+class UsersVip(Base):
+    __tablename__ = 'users_vip'
+
+    id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True, default=uuid_utils.uuid7)
+    email: Mapped[str_not_null] = mapped_column(unique=True)
+    hashed_password: Mapped[str_not_null]
+    mac_address1: Mapped[str_null]
+    mac_address2: Mapped[str_null]
+    mac_address3: Mapped[str_null]
+    created_at: Mapped[created_at]
+
+    def __str__(self):
+        return f'{self.user_id}'
